@@ -1,13 +1,20 @@
 class Bot {
     makeMove(gamestate) {
 
+
         const lastRound = gamestate.rounds[gamestate.rounds.length - 1];
 
         const p1DCount = gamestate.rounds.reduce((a, b) => b.p1 === 'D' ? a + 1 : a, 0);
 
         const p2DCount = gamestate.rounds.reduce((a, b) => b.p2 === 'D' ? a + 1 : a, 0);
 
-        if ((p1DCount < 100) && lastRound && (lastRound.p1 === lastRound.p2)) {
+
+        if (gamestate.rounds.length > 1 && gamestate.rounds[gamestate.rounds.length - 1].p2 === 'D' && gamestate.rounds[gamestate.rounds.length - 2].p2 === 'D') {
+            return 'W';
+        }
+
+
+        else if ((p1DCount < 100) && lastRound && (lastRound.p1 === lastRound.p2)) {
             return 'D';
         }
 
