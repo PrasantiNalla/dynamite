@@ -1,3 +1,5 @@
+
+
 class Bot {
     makeMove(gamestate) {
 
